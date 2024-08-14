@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Subir Material</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="upload-container">
+      <div class="upload-form">
+        <h2>SUBIR MATERIAL</h2>
+        <form
+          id="uploadForm"
+          method="post"
+          action="save_material.php"
+          enctype="multipart/form-data"
+        >
+          <input type="text" id="nombre" name="nombre" placeholder="NOMBRE" />
+          <input
+            type="text"
+            id="descripcion"
+            name="descripcion"
+            placeholder="DESCRIPCION"
+          />
+          <label for="archivo" class="file-label">
+            <img src="subir.png" alt="" />
+            <span id="fileLabelText">SELECCIONAR ARCHIVO</span>
+            <input
+              type="file"
+              id="archivo"
+              name="archivos"
+              style="display: none"
+            />
+          </label>
+          <button type="submit" id="uploadButton">SUBIR</button>
+        </form>
+        <button id="backButton">VOLVER ATRÁS</button>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("archivo")
+        .addEventListener("change", function () {
+          const fileLabel = document.getElementById("fileLabelText");
+          const fileName =
+            this.files.length > 0 ? this.files[0].name : "SELECCIONAR ARCHIVO";
+          fileLabel.textContent = fileName;
+        });
+    </script>
+  </body>
+</html>
